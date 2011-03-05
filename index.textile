@@ -1,0 +1,41 @@
+---
+layout: default
+title: home
+---
+
+h2. Propelling Scientific Experiments in Ruby
+
+Flagella is a simple framework for organizing scientific experiments in Ruby.
+
+h2. Similar Work
+
+It takes cues from a number of different sources:
+
+* "Organised Experiments":https://github.com/michaelbarton/organised_experiments
+** Written in Ruby
+** Uses DataMapper for backend storage
+** Comes with sample of Gene Model and experiment
+* "Project Template":https://github.com/johnmyleswhite/ProjectTemplate
+** A skeleton to organize experiments in R
+* "A Quick Guide to Organizing Computational Biology Projects":http://www.ploscompbiol.org/article/info:doi%2F10.1371%2Fjournal.pcbi.1000424
+
+h2. Technology Used
+
+Flagella attempts to use the latest and greatest in the world of Ruby. It also attempts to be as flexible as possible to allow for easy additions or modifications to the system.
+  
+* Bundler - to manage gems
+* ActiveRecord - for ORM
+* Sqlite by default. This can be changed to another database in a similar fashion to how Rails configures databases
+* Rake - for running tasks and experiments
+* BioRuby - for all your bio needs
+
+h2. Organization
+
+Flagella is a skeleton for your experiments. Different directories are set up for different uses
+
+* *analysis*: Used to store rake tasks and other code used in analyzing your data. Most of your scripting should occur here
+* *config*: Contains setup code similar to Rails. Modify your database or add more includes here
+* *data*: Store text files used to populate your models and other data here. This serves as a backup location for the data, which will largely be moved into a databased and accessed through models while running your experiment
+* *db*: Storage for database (if using sqlite) and migrations
+* *models*: Add new files here for each entity in your experiment that will be loaded from data and has relationships with other entities. Each model is, by default, derived from ActiveRecord::Base
+* *results*: Data, graphs, and other information generated from this experiment go here.

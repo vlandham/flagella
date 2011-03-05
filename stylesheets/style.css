@@ -81,15 +81,6 @@ body {
 	background: #F7FBFF;*/
 }
 
-a.title {
-	color: #8C0101;
-	font-size: 1.4em;
-	text-decoration: none;
-}
-
-a.title:hover {
-	text-decoration: underline;
-}
 
 
 #footer {
