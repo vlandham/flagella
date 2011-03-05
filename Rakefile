@@ -5,5 +5,6 @@ require File.expand_path('../config/environment', __FILE__)
 
 
 Dir.glob(File.expand_path('../lib', __FILE__)+"/*.rake").each {|rake_file| load(rake_file)}
+Dir.glob(File.expand_path('../analysis', __FILE__)+"/*.rake").each {|rake_file| load(rake_file)}
 
 
