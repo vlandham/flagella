@@ -32,22 +32,28 @@ namespace :db do
   end
  
   task :environment do
-    DATABASE_ENV = ENV['DATABASE_ENV'] || 'development'
     MIGRATIONS_DIR = ENV['MIGRATIONS_DIR'] || 'db/migrate'
   end
 
   task :configuration => :environment do
-    @config = YAML.load_file('config/databases.yml')[DATABASE_ENV]
+    # all components of the experiment need access to the database, so 
+    # for now keep the configuration in environment.rb
+    @config = @db_config
   end
 
   task :configure_connection => :configuration do
-    ActiveRecord::Base.establish_connection @config
-    ActiveRecord::Base.logger = Logger.new STDOUT if @config['logger']
+    # see above - also in environment.rb
+    # ActiveRecord::Base.establish_connection @config
+    # ActiveRecord::Base.logger = Logger.new STDOUT if @config['logger']
   end
 
   desc 'Create the database from config/database.yml for the current DATABASE_ENV'
   task :create => :configure_connection do
-    create_database @config
+    if @config["adapter"] != 'sqlite3'
+      create_database @config
+    else
+      puts "creation of database not required for sqlite3"
+    end
   end
 
   desc 'Drops the database for the current DATABASE_ENV'
