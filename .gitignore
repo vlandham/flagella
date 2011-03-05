@@ -1,0 +1,4 @@
+.DS_Store
+**/.DS_Store
+db/*.sqlite3
+data/*
