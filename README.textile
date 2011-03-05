@@ -24,6 +24,7 @@ Flagella attempts to use the latest and greatest in the world of Ruby. It also a
 * ActiveRecord - for ORM
 * Sqlite by default. This can be changed to another database in a similar fashion to how Rails configures databases
 * Rake - for running tasks and experiments
+* BioRuby - for all your bio needs
 
 h2. Organization
 
