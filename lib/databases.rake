@@ -32,7 +32,7 @@ namespace :db do
   end
  
   task :environment do
-    MIGRATIONS_DIR = ENV['MIGRATIONS_DIR'] || 'db/migrate'
+    
   end
 
   task :configuration => :environment do

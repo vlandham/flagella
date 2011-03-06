@@ -7,6 +7,8 @@ Bundler.require
 
 require 'active_record'
 DATABASE_ENV = ENV['DATABASE_ENV'] || 'development'
+MIGRATIONS_DIR = ENV['MIGRATIONS_DIR'] || File.expand_path('../../db/migrate/', __FILE__)
+MODELS_DIR = File.expand_path('../../models/', __FILE__)
 
 @db_config = YAML.load_file(File.expand_path('../../config/database.yml', __FILE__))[DATABASE_ENV]
 ActiveRecord::Base.establish_connection @db_config

@@ -1,0 +1,27 @@
+#! /usr/bin/env ruby
+
+abort "ERROR: requires command" unless ARGV.size > 0
+command = ARGV.shift
+
+def mangle_input(input_array)
+  input_array.join(".")
+end
+
+case command.to_sym
+when :migration
+  # simply get the parameters into a format that rake can deal with. 
+  abort "ERROR: requires migration name" unless ARGV.size > 0
+  name = ARGV.shift
+  if ARGV.size > 0 && ARGV[0].match(":")
+    abort "ERROR: requires migration table"
+  end
+  table = ARGV.shift
+  fields = mangle_input ARGV
+  exec("rake create:migration[#{name},#{table},#{fields}]")
+when :model
+  abort "ERROR: requires model name" unless ARGV.size > 0
+  name = ARGV.shift
+  fields = mangle_input ARGV
+  exec("rake create:model[#{name},#{fields}]")
+else
+end
